@@ -6,7 +6,7 @@ class WeatherData {
 
         this.current = {
             // model of all the city objects 
-            temperature: 0,
+            temperature: null,
             city: 'unknown',
             country: 'unknown'
         };

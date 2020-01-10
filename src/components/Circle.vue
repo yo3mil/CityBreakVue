@@ -11,7 +11,7 @@
       
       <div class="circle__data-temp">
         <transition name="bump">
-          <loader v-if="this.display.temperature === 0"></loader>
+          <loader v-if="this.display.temperature === null"></loader>
           <span v-else>{{ this.display.temperature + '°C'}}</span>
         </transition>
       </div>
@@ -24,7 +24,7 @@
 
     <a href="#" class="circle__plus icon-plus" @click="plus()">
       <svg class="circle__icon">
-        <use xlink:href="src/img/sprite.svg#icon-plus"></use>
+        <use xlink:href="./img/sprite.svg#icon-plus"></use>
       </svg>
     </a>
       

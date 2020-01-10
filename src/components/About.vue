@@ -12,7 +12,7 @@
             <h3>API:</h3>
             <a href="http://www.openweathermap.org">www.openweathermap.org</a>
             <h3>GIT:</h3>
-            <a href="https://github.com/yo3mil/CityBreak.git">SRC Code</a>
+            <a href="https://github.com/yo3mil/CityBreakVue.git">SRC Code</a>
         </div>
     </section>
 </template>

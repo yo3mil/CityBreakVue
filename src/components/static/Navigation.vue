@@ -5,13 +5,13 @@
       <!--List Button -->
       <a class="link " @click="changeVisible(false, true, false, false)">
         <svg class="nav__icon">
-          <use xlink:href="src/img/sprite.svg#icon-list2"></use>
+          <use xlink:href="./img/sprite.svg#icon-list2"></use>
         </svg> 
       </a>
       <!--about Button -->
       <a class="link" @click="changeVisible(false, false, true, false)">
         <svg class="nav__icon right">
-          <use xlink:href="src/img/sprite.svg#icon-info"></use>
+          <use xlink:href="./img/sprite.svg#icon-info"></use>
         </svg>
       </a>
     </div>
@@ -20,7 +20,7 @@
     <div v-else class="nav" key="sub">
       <div class="home-btn" @click="changeVisible(true, false, false, true)">
         <svg class="home-btn__icon">
-            <use xlink:href="src/img/sprite.svg#icon-home3" id="home"></use>
+            <use xlink:href="./img/sprite.svg#icon-home3" id="home"></use>
         </svg>
       home
       </div>
