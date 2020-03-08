@@ -24,7 +24,7 @@
 
     <a href="#" class="circle__plus icon-plus" @click="plus()">
       <svg class="circle__icon">
-        <use xlink:href="./img/sprite.svg#icon-plus"></use>
+        <use xlink:href="src/img/sprite.svg#icon-plus"></use>
       </svg>
     </a>
       
