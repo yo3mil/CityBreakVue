@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
     .display {
         
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         opacity: .8;
         margin-top: 10px;
     }
