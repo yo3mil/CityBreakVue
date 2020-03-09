@@ -8,18 +8,20 @@
     </a>
 
     <div class="circle__data">
-      
       <div class="circle__data-temp">
-        <transition name="bump">
-          <loader v-if="this.display.temperature === null"></loader>
-          <span v-else>{{ this.display.temperature + '°C'}}</span>
-        </transition>
+        <!-- LOADER COMPONENT-->
+        <loader v-if="this.current.temperature === null"></loader>
+
+        <span v-else>{{ this.current.temperature + '°C'}}</span>
       </div>
 
       <div class="circle__data-location" @click="goToLink()">
-        <span v-if="this.display.city === 'unknown' || this.display.country === 'unknown'"></span>
-        <span v-else>{{ `${this.display.city}, ${this.display.country}` }}</span>
+        <span v-if="this.current.city === 'unknown' || this.current.country === 'unknown'"></span>
+        <span v-else>{{ `${this.current.city}, ${this.current.country}` }}</span>
       </div>
+
+      <!--SHOW DIFFERENCE COMPONENT-->
+      <difference v-if="this.current.city !== 'unknown' || this.current.country !== 'unknown'" :current="this.current" :initial="this.initial"></difference>
     </div>
 
     <a href="#" class="circle__plus icon-plus" @click="plus()">
@@ -33,10 +35,12 @@
 
 <script>
   import Loader from '../components/static/Loader';
-
+  import Difference from '../components/addons/Difference.vue';
+  
   export default {
     components: {
-      Loader
+      Loader,
+      Difference
     },
     props: {
       currentData: {
@@ -51,7 +55,12 @@
     data: function() {
       return {
         loaderVisible: true,
-        display: this.currentData,
+
+        // initial temp, non mutable
+        initial: this.currentData,
+        // mutable data:
+        current: this.currentData,
+        // array of all 
         capitals: this.capitalsArray
       }
     },
@@ -60,18 +69,18 @@
         console.log(this.display);
         console.log(this.capitals);
       },
-      plus() {
+      plus(){
         
-        if (this.display.city === this.capitals[(this.capitals.length - 1)].city) {
-          alert(`Woah! ${this.display.city} is the warmest capital city in Europe right now!`);
+        if (this.current.city === this.capitals[(this.capitals.length - 1)].city) {
+          alert(`Woah! ${this.current.city} is the warmest capital city in Europe right now!`);
         } else {
           this.addTemp();
         }
       },
       minus(){
         
-        if (this.display.city === this.capitals[0].city) {
-          alert(`Woah! ${this.display.city} is the coldest capital city in Europe right now!`);
+        if (this.current.city === this.capitals[0].city) {
+          alert(`Woah! ${this.current.city} is the coldest capital city in Europe right now!`);
         } else {
           this.subTemp();
         }
@@ -79,8 +88,8 @@
       addTemp() {
         //find next highest in the array
         for (let i = 0; i < this.capitals.length; i++) {
-          if(this.capitals[i].temperature > this.display.temperature) {
-            this.display = this.capitals[i];
+          if(this.capitals[i].temperature > this.current.temperature) {
+            this.current = this.capitals[i];
             break;
           }
         }
@@ -88,14 +97,14 @@
       subTemp() {
         // Find next lowest in the array (loop from the back )
         for (let i = (this.capitals.length - 1); i >= 0; i--) {
-          if (this.capitals[i].temperature < this.display.temperature) {
-            this.display = this.capitals[i];
+          if (this.capitals[i].temperature < this.current.temperature) {
+            this.current = this.capitals[i];
             break;
           }
         }
       },
       goToLink() {
-        window.open(`http://www.google.com/search?q=${this.display.city}`,`mywindow`);
+        window.open(`http://www.google.com/search?q=${this.current.city}`,`mywindow`);
       }
     }
   }
