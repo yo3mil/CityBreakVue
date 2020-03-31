@@ -45,15 +45,15 @@ export default {
 
 <style lang="scss" scoped>
     .display {
-        
-        font-size: 1.3rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
         opacity: .8;
-        margin-top: 10px;
+        margin-bottom: -20px;
     }
     .hot {
-        color: rgb(224, 152, 84);
+        color: rgb(240, 210, 78);
     }
     .cold {
-        color: rgb(101, 192, 228);
+        color: #07c6ff;
     }
 </style>

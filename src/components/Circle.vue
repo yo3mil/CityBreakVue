@@ -8,6 +8,8 @@
     </a>
 
     <div class="circle__data">
+      <!--SHOW DIFFERENCE COMPONENT-->
+      <difference v-if="this.current.city !== 'unknown' || this.current.country !== 'unknown'" :current="this.current" :initial="this.initial"></difference>
       <div class="circle__data-temp">
         <!-- LOADER COMPONENT-->
         <loader v-if="this.current.temperature === null"></loader>
@@ -20,8 +22,7 @@
         <span v-else>{{ `${this.current.city}, ${this.current.country}` }}</span>
       </div>
 
-      <!--SHOW DIFFERENCE COMPONENT-->
-      <difference v-if="this.current.city !== 'unknown' || this.current.country !== 'unknown'" :current="this.current" :initial="this.initial"></difference>
+      
     </div>
 
     <a href="#" class="circle__plus icon-plus" @click="plus()">
